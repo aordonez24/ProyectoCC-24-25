@@ -50,7 +50,7 @@ Este documento será actualizado conforme avance el desarrollo de **OcioSinGlute
 
 ## Contribuciones
 
-Si deseas contribuir al proyecto, por favor revisa el archivo [INFORMACION.md](./INFORMACION.md) para conocer las instrucciones de contribución y las buenas prácticas recomendadas.
+Si deseas contribuir al proyecto, por favor revisa el archivo [INFORMACION](./INFORMACION.md) para conocer las instrucciones de contribución y las buenas prácticas recomendadas.
 
 
 **Fecha de última actualización**: 30 de Septiembre de 2024
