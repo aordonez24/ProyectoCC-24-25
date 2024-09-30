@@ -41,5 +41,5 @@ El principal objetivo de **OcioSinGluten** es facilitar la vida diaria de las pe
 Este proyecto está bajo la licencia **MIT**. Consulta el archivo [LICENSE](./LICENSE) para más detalles.
 ---  
 
-# Contribuir
-Si deseas contribuir a OcioSinGluten, por favor revisa el archivo CONTRIBUTING.md para conocer los detalles del proceso de contribución.
+## Contribuir
+Si deseas contribuir a OcioSinGluten, por favor revisa el archivo [CONTRIBUCION](./CONTRIBUCION.md) para conocer los detalles del proceso de contribución.
