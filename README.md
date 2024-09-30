@@ -37,9 +37,7 @@ El principal objetivo de **OcioSinGluten** es facilitar la vida diaria de las pe
 - **Framework**: Vue.js
 
 ## Licencia
-
 Este proyecto está bajo la licencia **MIT**. Consulta el archivo [LICENSE](./LICENSE) para más detalles.
----  
 
-## Contribuir
-Si deseas contribuir a OcioSinGluten, por favor revisa el archivo [CONTRIBUCION](./CONTRIBUCION.md) para conocer los detalles del proceso de contribución.
+## Contribuir y contacto
+Si deseas contribuir a OcioSinGluten o contactar conmigo, por favor revisa el archivo [INFORMACIÓN DEL PROYECTO](./INFORMACION.md) para conocer los detalles del proceso de contribución.
