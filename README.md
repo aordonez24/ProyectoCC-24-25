@@ -1,8 +1,8 @@
 # ProyectoCC-24-25
 Proyecto de la asignatura Cloud Computing del Master de Ingeniería Informática de la Universidad de Granada
 
-# OcioSinGluten ![image](https://github.com/user-attachments/assets/fc33a77b-1e60-4670-b005-ccaed8260525)
-
+# OcioSinGluten 
+![image](https://github.com/user-attachments/assets/fc33a77b-1e60-4670-b005-ccaed8260525)
 
 ## Descripción del Proyecto
 
