@@ -41,3 +41,6 @@ Este proyecto está bajo la licencia **MIT**. Consulta el archivo [LICENSE](./LI
 
 ## Documentación sobre la realización del proyecto
 Documento para seguir el proceso de desarrollo del proyecto: [DOCUMENTACION](./DOCUMENTACION.md)
+
+## Contribuir a OcioSinGluten
+Documento para contribuir a OcioSinGluten: [INFORMACIÓN](./INFORMACION.md)
