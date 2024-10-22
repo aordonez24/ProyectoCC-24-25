@@ -8,6 +8,7 @@
 
 Este proyecto está bajo la licencia **MIT**. Puedes consultar el archivo [LICENSE](./LICENSE) para obtener más detalles sobre los términos de uso y distribución.
 
+
 ---
 
 ## Cómo Contribuir al Proyecto
