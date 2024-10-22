@@ -30,7 +30,7 @@ El principal objetivo de **OcioSinGluten** es facilitar la vida diaria de las pe
 
 ### Backend
 - **Lenguaje**: Python
-- **Framework**: Django / Flask (a definir)
+- **Framework**: Flask 
 
 ### Frontend
 - **Lenguaje**: HTML5, CSS3, JavaScript
