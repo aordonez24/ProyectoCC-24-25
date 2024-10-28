@@ -1,4 +1,4 @@
-#  Hito 2: Integración continua
+# Hito 2: Integración continua
 
 ## Objetivo
 
@@ -12,10 +12,10 @@ El principal objetivo de este hito es añadir tests y la infraestructura virtual
 
     ```Makefile
     test:
-        pytest
+        PYTHONPATH=. pytest
     ```
 
-   Esto define la tarea `test`, que se puede ejecutar con el comando `make test`.
+   Esto define la tarea `test`, que se puede ejecutar con el comando `make test` y asegura que `pytest` se ejecute en el entorno de `PYTHONPATH` adecuado.
 
 ### 2. Elección de la **biblioteca de aserciones**
 1. Se eligió **pytest** como la biblioteca de aserciones, ya que es más potente y flexible que `unittest`.
@@ -43,36 +43,21 @@ El principal objetivo de este hito es añadir tests y la infraestructura virtual
 
 ### 4. **Integración continua con GitHub Actions**
 1. Se configuró GitHub Actions para ejecutar los tests automáticamente en cada push o pull request.
-2. Se creó un archivo `.github/workflows/test.yml` con el siguiente contenido:
+2. Se creó un archivo `.github/workflows/test.yml` 
 
-    ```yaml
-    name: Run Tests
+### 5. **Implementación del archivo `pytest.ini`**
+1. Se creó un archivo `pytest.ini` en el directorio raíz para definir el directorio de pruebas y establecer `PYTHONPATH`.
+2. El archivo `pytest.ini` contiene la siguiente configuración:
 
-    on: [push, pull_request]
-
-    jobs:
-      test:
-        runs-on: ubuntu-latest
-        
-        steps:
-        - name: Checkout code
-          uses: actions/checkout@v2
-
-        - name: Set up Python
-          uses: actions/setup-python@v2
-          with:
-            python-version: '3.x'
-
-        - name: Install dependencies
-          run: |
-            python -m pip install --upgrade pip
-            pip install pytest
-
-        - name: Run tests
-          run: pytest
+    ```ini
+    [pytest]
+    testpaths = tests
+    pythonpath = .
     ```
 
-### 5. **Implementación de las pruebas unitarias**
+   Esto asegura que `pytest` ejecute las pruebas correctamente, encontrando todos los módulos en el proyecto sin necesidad de ajustes manuales en `PYTHONPATH`.
+
+### 6. **Implementación de las pruebas unitarias**
 1. Se identificaron aspectos principales de la lógica de negocio a testear: la geolocalización y el sistema de recomendaciones.
 2. Ejemplo de prueba para la geolocalización:
 
@@ -82,8 +67,9 @@ El principal objetivo de este hito es añadir tests y la infraestructura virtual
         assert location is not None
     ```
 
-### 6. **Justificación de las elecciones técnicas**
+### 7. **Justificación de las elecciones técnicas**
 1. **Gestor de tareas**: Se eligió Make por su simplicidad y por ser una herramienta estándar ampliamente usada.
 2. **Biblioteca de aserciones**: Se optó por pytest debido a su flexibilidad, potencia, y ecosistema robusto.
 3. **Test runner**: Se eligió pytest por ser un framework de pruebas completo, que incluye su propio test runner.
 4. **Integración continua**: Se configuró GitHub Actions por su integración nativa con GitHub y su facilidad de uso para automatizar las pruebas.
+5. **Archivo pytest.ini**: Se incluyó este archivo para asegurar que `pytest` pueda encontrar los módulos sin problemas de rutas, lo cual es importante en la integración continua y para mejorar la consistencia en distintos entornos.

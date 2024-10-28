@@ -52,5 +52,8 @@ Este documento será actualizado conforme avance el desarrollo de **OcioSinGlute
 
 Si deseas contribuir al proyecto, por favor revisa el archivo [INFORMACION](./INFORMACION.md) para conocer las instrucciones de contribución y las buenas prácticas recomendadas.
 
+## Hito 2
 
-**Fecha de última actualización**: 30 de Septiembre de 2024
+Si desea comprobar el avance del proyecto en el hito 2, consulte el archivo [Hito 2](./Hito2-IC.md)
+
+**Fecha de última actualización**: 28 de octubre de 2024

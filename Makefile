@@ -1,2 +1,3 @@
 test:
-    pytest
+    PYTHONPATH=. pytest
+
