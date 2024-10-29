@@ -1,5 +1,7 @@
 # Hito 2: Integración continua
 
+Proyecto: OcioSinGluten  
+
 ## Objetivo
 
 El principal objetivo de este hito es añadir tests y la infraestructura virtual de la aplicación, gestores de dependencias y/o tareas, necesaria para que se ejecuten los tests, además de añadir integración continua (CI) al proyecto.
@@ -58,18 +60,11 @@ El principal objetivo de este hito es añadir tests y la infraestructura virtual
    Esto asegura que `pytest` ejecute las pruebas correctamente, encontrando todos los módulos en el proyecto sin necesidad de ajustes manuales en `PYTHONPATH`.
 
 ### 6. **Implementación de las pruebas unitarias**
-1. Se identificaron aspectos principales de la lógica de negocio a testear: la geolocalización y el sistema de recomendaciones.
-2. Ejemplo de prueba para la geolocalización:
+1. Se identificaron aspectos principales de la lógica de negocio a testear: la geolocalización, el sistema de recomendaciones, reseñas y usuarios.
 
-    ```python
-    def test_geolocation():
-        location = get_nearest_location(user_coordinates)
-        assert location is not None
-    ```
-
-### 7. **Justificación de las elecciones técnicas**
-1. **Gestor de tareas**: Se eligió Make por su simplicidad y por ser una herramienta estándar ampliamente usada.
-2. **Biblioteca de aserciones**: Se optó por pytest debido a su flexibilidad, potencia, y ecosistema robusto.
-3. **Test runner**: Se eligió pytest por ser un framework de pruebas completo, que incluye su propio test runner.
-4. **Integración continua**: Se configuró GitHub Actions por su integración nativa con GitHub y su facilidad de uso para automatizar las pruebas.
-5. **Archivo pytest.ini**: Se incluyó este archivo para asegurar que `pytest` pueda encontrar los módulos sin problemas de rutas, lo cual es importante en la integración continua y para mejorar la consistencia en distintos entornos.
+### 7. Justificación de las elecciones técnicas
+1. **Gestor de tareas**: Se eligió Make por su simplicidad, compatibilidad multiplataforma y porque permite estructurar comandos de una forma que es comprensible y ampliamente usada en proyectos de desarrollo colaborativo.
+2. **Biblioteca de aserciones**: `pytest` se eligió debido a su flexibilidad, potencia, y ecosistema robusto, que facilita escribir pruebas de una forma concisa y manejable en comparación con `unittest`.
+3. **Test runner**: `pytest` también se utilizó como test runner, ya que permite la ejecución automática de pruebas, la creación de informes detallados, y una sintaxis fácil de entender y mantener.
+4. **Integración continua con GitHub Actions**: Se configuró GitHub Actions debido a su integración nativa con GitHub, facilidad de configuración, y soporte para ejecutar workflows automáticamente en cada push y pull request, asegurando una CI confiable.
+5. **Archivo `pytest.ini`**: Este archivo permite configurar las rutas de `PYTHONPATH` de forma consistente, tanto en entornos locales como en GitHub Actions, lo cual es esencial para evitar errores de importación en la CI y asegurar una estructura de pruebas robusta.
