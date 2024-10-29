@@ -13,7 +13,7 @@ def test_obtener_recomendaciones_preferencias_usuario():
 
 def test_obtener_recomendaciones_valoracion_minima():
     preferencias_usuario = {"sin_gluten": True}
-    recomendaciones = servicio_recomendaciones.obtener_recomendaciones(preferencias_usuario, valoracion_minima=4.5)
+    recomendaciones = servicio_recomendaciones.obtener_recomendaciones(preferencias_usuario, valoracion_minima=5.5)
 
     assert len(recomendaciones) == 1
     assert recomendaciones[0]["nombre"] == "Restaurante A"
