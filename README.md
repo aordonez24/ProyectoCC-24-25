@@ -44,3 +44,8 @@ Documento para seguir el proceso de desarrollo del proyecto: [DOCUMENTACION](./D
 
 ## Contribuir a OcioSinGluten
 Documento para contribuir a OcioSinGluten: [INFORMACIÓN](./INFORMACION.md)
+
+## Hito 2
+
+Si desea comprobar el avance del proyecto en el hito 2, consulte el archivo [Hito 2](Hitos/Hito2-IC.md)
+
