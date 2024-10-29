@@ -54,6 +54,6 @@ Si deseas contribuir al proyecto, por favor revisa el archivo [INFORMACION](./IN
 
 ## Hito 2
 
-Si desea comprobar el avance del proyecto en el hito 2, consulte el archivo [Hito 2](./Hito2-IC.md)
+Si desea comprobar el avance del proyecto en el hito 2, consulte el archivo [Hito 2](Hitos/Hito2-IC.md)
 
-**Fecha de última actualización**: 28 de octubre de 2024
+**Fecha de última actualización**: 29 de octubre de 2024
