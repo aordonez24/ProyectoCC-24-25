@@ -121,5 +121,3 @@ Escribir pruebas exhaustivas para las rutas de la API y documentar los resultado
 
 ---
 
-**Autor**: [Tu Nombre]  
-**Fecha**: [Fecha Actual]
