@@ -49,3 +49,6 @@ Documento para contribuir a OcioSinGluten: [INFORMACIÓN](./INFORMACION.md)
 
 Si desea comprobar el avance del proyecto en el hito 2, consulte el archivo [Hito 2](Hitos/Hito2-IC.md)
 
+## Hito 3
+
+Si desea comprobar el avance del proyecto en el hito 3, consulte el archivo [Hito 3](Hitos/Hito3.md)
