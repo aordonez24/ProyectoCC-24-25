@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required
+from utils.logging_config import logger, log_request
 
 app = Flask(__name__)
 app.config['JWT_SECRET_KEY'] = 'clave_secreta_segura'
@@ -13,11 +14,14 @@ valoraciones = []
 
 # Rutas de Autenticación
 @app.route('/auth/register', methods=['POST'])
+@log_request
 def register():
     data = request.json
     if data['email'] in users_db:
+        logger.warning(f"Intento de registro duplicado: {data['email']}")
         return jsonify({"error": "Usuario ya registrado"}), 400
     users_db[data['email']] = {"nombre": data['nombre'], "password": data['password']}
+    logger.info(f"Usuario registrado: {data['email']}")
     return jsonify({"message": "Usuario registrado con éxito"}), 201
 
 @app.route('/auth/login', methods=['POST'])

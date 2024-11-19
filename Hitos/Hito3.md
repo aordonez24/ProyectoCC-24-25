@@ -77,3 +77,49 @@ El diseño de la API se basa en un enfoque REST, donde cada ruta representa un r
 
 ---
 
+## Paso 3: Sistema de Logs
+
+### Justificación Técnica
+1. **Librería Elegida**: `loguru`
+   - Proporciona funcionalidades avanzadas como rotación de archivos, niveles de registro y decoradores para registrar automáticamente eventos.
+   - Fácil de integrar y mantener.
+
+2. **Propósito**:
+   - Registrar cada solicitud entrante con su ruta, método y tiempo de ejecución.
+   - Categorizar eventos en niveles de registro: INFO, WARNING, ERROR.
+   - Facilitar la depuración de errores y el análisis de uso.
+
+### Implementación
+
+1. **Archivo `logging_config.py`**:
+   - Configura un sistema de logs con rotación de archivos (1 MB por archivo) y retención por 10 días.
+   - Proporciona un decorador `log_request` para registrar solicitudes y respuestas.
+
+2. **Integración**:
+   - Todas las rutas de la API usan el decorador `@log_request` para registrar eventos automáticamente.
+
+### Ejemplo de Salida de Logs
+1. **INFO**: Solicitudes exitosas.
+   ```
+   2024-11-19 14:03:25.123 | INFO     | Ruta accedida: /auth/register | Método: POST
+   ```
+
+2. **WARNING**: Advertencias o situaciones anómalas.
+   ```
+   2024-11-19 14:08:45.912 | WARNING  | Intento de inicio de sesión fallido: malintento@example.com
+   ```
+
+3. **ERROR**: Fallos en la ejecución.
+   ```
+   2024-11-19 14:10:50.234 | ERROR    | Error en la ruta /usuarios/5: 'NoneType' object is not callable
+   ```
+
+---
+
+## Próximo Paso
+Escribir pruebas exhaustivas para las rutas de la API y documentar los resultados.
+
+---
+
+**Autor**: [Tu Nombre]  
+**Fecha**: [Fecha Actual]
