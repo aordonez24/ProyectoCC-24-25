@@ -116,8 +116,49 @@ El diseño de la API se basa en un enfoque REST, donde cada ruta representa un r
 
 ---
 
-## Próximo Paso
-Escribir pruebas exhaustivas para las rutas de la API y documentar los resultados.
+
+## Paso 4: Pruebas
+
+### Configuración de Pruebas
+Las pruebas se implementaron con **pytest** y abarcan:
+
+1. **Autenticación**:
+   - Registro, inicio de sesión y cierre de sesión.
+2. **Gestión de usuarios**:
+   - Creación, actualización, eliminación y búsqueda.
+3. **Gestión de establecimientos**:
+   - Creación, búsqueda y actualización.
+4. **Gestión de valoraciones**:
+   - Adición, edición y eliminación de valoraciones.
+
+### Ejemplo de Prueba Exitosa
+```python
+def test_register_user(client):
+    response = client.post('/auth/register', json={"email": "newuser@example.com", "nombre": "New User", "password": "123456"})
+    assert response.status_code == 201
+    assert response.json["message"] == "Usuario registrado con éxito"
+```
+
+### Ejecución
+Las pruebas se ejecutaron usando el siguiente comando:
+```bash
+pytest --cov=app tests/
+```
+
+#### Cobertura de Pruebas
+Se generó un informe de cobertura para identificar las áreas del código cubiertas por las pruebas.
+
+---
+
+## Conclusión
+El proyecto ahora cuenta con:
+
+1. **Microservicios completos y funcionales**: Todas las rutas cumplen con los requisitos de diseño REST.
+2. **Pruebas exhaustivas**: Las pruebas aseguran la calidad y fiabilidad de las funcionalidades implementadas.
+3. **Sistema de logs robusto**: Registro centralizado de la actividad de la API para facilitar la depuración y auditoría.
+
+Con esto, el producto mínimo viable (MVP) está listo y es estable, lo que permite futuras extensiones y mejoras.
+
 
 ---
 
