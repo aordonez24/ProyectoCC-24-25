@@ -1,5 +1,5 @@
 import pytest
-from app.geolocalizacion import servicio_geolocalizacion
+from app.services.geolocalizacion import servicio_geolocalizacion
 
 
 def test_obtener_ubicaciones_cercanas_radio_valido():

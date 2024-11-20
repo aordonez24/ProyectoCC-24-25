@@ -1,5 +1,5 @@
 import pytest
-from app.valoracion import servicio_valoraciones
+from app.services.valoracion import servicio_valoraciones
 
 def test_agregar_valoracion_exitosa():
     valoracion = servicio_valoraciones.agregar_valoracion("Restaurante Prueba", "Excelente!", 5)

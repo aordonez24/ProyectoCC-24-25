@@ -1,5 +1,5 @@
 import pytest
-from app.recomendaciones import servicio_recomendaciones
+from app.services.recomendaciones import servicio_recomendaciones
 
 
 def test_obtener_recomendaciones_preferencias_usuario():
