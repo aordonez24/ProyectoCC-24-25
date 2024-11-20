@@ -1,5 +1,7 @@
 import math
 from typing import List, Tuple, Dict
+from utils.logging_config import logger
+
 
 
 class ServicioGeolocalizacion:
@@ -25,27 +27,16 @@ class ServicioGeolocalizacion:
 
         return math.sqrt((loc1[0] - loc2[0]) ** 2 + (loc1[1] - loc2[1]) ** 2)
 
-    def obtener_ubicaciones_cercanas(self, ubicacion_usuario: Tuple[float, float], radio: float) -> List[Dict]:
-        """
-        Retorna los establecimientos dentro del radio especificado desde la ubicación del usuario.
-
-        Parámetros:
-        - ubicacion_usuario: Tupla (latitud, longitud) del usuario.
-        - radio: Radio en kilómetros.
-
-        Retorna:
-        - Lista de diccionarios con establecimientos dentro del radio.
-        """
+    def obtener_ubicaciones_cercanas(self, ubicacion_usuario, radio):
         if radio <= 0:
-            raise ValueError("El radio debe ser mayor que cero.")
-
-        ubicaciones_filtradas = []
+            raise ValueError("El radio debe ser mayor a cero.")
+        resultados = []
         for establecimiento in self.establecimientos:
             distancia = self.calcular_distancia(ubicacion_usuario, establecimiento["ubicacion"])
             if distancia <= radio:
-                ubicaciones_filtradas.append({**establecimiento, "distancia": distancia})
-
-        return sorted(ubicaciones_filtradas, key=lambda x: x["distancia"])
+                establecimiento["distancia"] = distancia
+                resultados.append(establecimiento)
+        return resultados
 
 
 # Instancia global del servicio para su reutilización

@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required
 from app.services.geolocalizacion import servicio_geolocalizacion
 from app.services.recomendaciones import servicio_recomendaciones
+from app.services.establecimiento import servicio_establecimientos
 from app.services.usuario import servicio_usuarios, ErrorUsuarioExistente
 from app.services.valoracion import servicio_valoraciones
 from utils.logging_config import logger, log_request
@@ -104,60 +105,54 @@ def buscar_usuarios():
     resultados = servicio_usuarios.buscar_usuarios(query)
     return jsonify(resultados), 200
 
-### Establecimientos
-@app.route('/establecimientos/<int:id>', methods=['GET'])
-@log_request
-def obtener_establecimiento(id):
-    try:
-        establecimiento = servicio_geolocalizacion.obtener_establecimiento_por_id(id)
-        if not establecimiento:
-            return jsonify({"error": "Establecimiento no encontrado"}), 404
-        return jsonify(establecimiento), 200
-    except Exception as e:
-        logger.error(f"Error en /establecimientos/{id}: {str(e)}")
-        return jsonify({"error": "Error interno en el servidor"}), 500
-
-
+# Crear un nuevo establecimiento
 @app.route('/establecimientos', methods=['POST'])
 @jwt_required()
 @log_request
 def agregar_establecimiento():
     data = request.json
-    establecimiento = {"id": len(establecimientos) + 1, "nombre": data['nombre'], "ubicacion": data['ubicacion']}
-    establecimientos.append(establecimiento)
+    if not data or "nombre" not in data or "ubicacion" not in data:
+        return jsonify({"error": "Faltan datos obligatorios"}), 400
+    establecimiento = servicio_establecimientos.crear_establecimiento(data["nombre"], data["ubicacion"])
     return jsonify({"message": "Establecimiento añadido con éxito", "establecimiento": establecimiento}), 201
 
+# Obtener un establecimiento por ID
+@app.route('/establecimientos/<int:id>', methods=['GET'])
+@log_request
+def obtener_establecimiento(id):
+    establecimiento = servicio_establecimientos.obtener_establecimiento(id)
+    if not establecimiento:
+        return jsonify({"error": "Establecimiento no encontrado"}), 404
+    return jsonify(establecimiento), 200
+
+# Editar un establecimiento
 @app.route('/establecimientos/<int:id>', methods=['PUT'])
 @jwt_required()
 @log_request
 def editar_establecimiento(id):
     data = request.json
-    establecimiento = next((e for e in establecimientos if e.get('id') == id), None)
+    establecimiento = servicio_establecimientos.editar_establecimiento(id, data)
     if not establecimiento:
         return jsonify({"error": "Establecimiento no encontrado"}), 404
-    establecimiento.update(data)
     return jsonify({"message": "Establecimiento actualizado con éxito", "establecimiento": establecimiento}), 200
 
+# Eliminar un establecimiento
 @app.route('/establecimientos/<int:id>', methods=['DELETE'])
 @jwt_required()
 @log_request
 def eliminar_establecimiento(id):
-    establecimiento = next((e for e in establecimientos if e.get('id') == id), None)
+    establecimiento = servicio_establecimientos.eliminar_establecimiento(id)
     if not establecimiento:
         return jsonify({"error": "Establecimiento no encontrado"}), 404
-    establecimientos.remove(establecimiento)
     return jsonify({"message": "Establecimiento eliminado con éxito"}), 200
 
+# Buscar establecimientos
 @app.route('/establecimientos/search', methods=['GET'])
 @log_request
 def buscar_establecimientos():
     query = request.args.get('q', '')
-    try:
-        resultados = servicio_recomendaciones.buscar_establecimientos(query)
-        return jsonify(resultados), 200
-    except AttributeError as e:
-        logger.error(f"Error en /establecimientos/search: {str(e)}")
-        return jsonify({"error": "Error interno en el servidor"}), 500
+    resultados = servicio_establecimientos.buscar_establecimientos(query)
+    return jsonify(resultados), 200
 
 ### Valoraciones
 @app.route('/establecimientos/<int:id>/valoraciones', methods=['POST'])

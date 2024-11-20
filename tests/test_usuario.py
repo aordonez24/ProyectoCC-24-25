@@ -14,5 +14,7 @@ def test_registro_usuario_contrasena_corta():
 
 def test_registro_usuario_existente():
     servicio.registrar_usuario("existente@example.com", "123456")
-    with pytest.raises(ErrorUsuarioExistente):
+    with pytest.raises(ErrorUsuarioExistente, match="El usuario ya existe."):
         servicio.registrar_usuario("existente@example.com", "123456")
+
+

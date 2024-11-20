@@ -35,6 +35,9 @@ class ServicioRecomendaciones:
 
         return sorted(establecimientos_filtrados, key=lambda x: x["valoracion"], reverse=True)
 
+    def buscar_establecimientos(self, query: str):
+        return [e for e in self.establecimientos if query.lower() in e["nombre"].lower()]
+
 
 # Instancia global del servicio para su reutilización
 servicio_recomendaciones = ServicioRecomendaciones()

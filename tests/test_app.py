@@ -53,9 +53,25 @@ def test_update_user(client, auth_headers):
     assert response.json["message"] == "Usuario actualizado con éxito"
 
 def test_delete_user(client, auth_headers):
-    response = client.delete('/usuarios/1', headers=auth_headers)
-    assert response.status_code == 200
-    assert response.json["message"] == "Usuario eliminado con éxito"
+    # Crear un usuario temporal para el test
+    response_register = client.post('/auth/register', json={"email": "tempuser@example.com", "password": "123456"})
+    assert response_register.status_code == 201, f"Error creando usuario para el test: {response_register.json}"
+
+    # Obtener el usuario recién registrado mediante su ID simulado
+    response_user = client.get('/usuarios/1', headers=auth_headers)
+    assert response_user.status_code == 200, f"Error obteniendo el usuario creado: {response_user.json}"
+    user_id = response_user.json.get("id")
+    assert user_id is not None, "No se pudo obtener el ID del usuario creado"
+
+    # Intentar borrar el usuario
+    response_delete = client.delete(f'/usuarios/1', headers=auth_headers)
+    assert response_delete.status_code == 200, f"Error eliminando el usuario: {response_delete.json}"
+    assert response_delete.json["message"] == "Usuario eliminado con éxito"
+
+    # Verificar que el usuario ya no existe
+    response_check = client.get(f'/usuarios/{user_id}', headers=auth_headers)
+    assert response_check.status_code == 404, "El usuario debería haber sido eliminado"
+
 
 # Tests de Establecimientos
 def test_create_establecimiento(client, auth_headers):
