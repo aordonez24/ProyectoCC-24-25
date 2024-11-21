@@ -2251,3 +2251,113 @@
 2024-11-21 00:26:00.743 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 201
 2024-11-21 00:26:00.744 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /establecimientos/1/valoraciones/1 | Método: DELETE
 2024-11-21 00:26:00.745 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 200
+2024-11-21 01:07:56.895 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /auth/register | Método: POST
+2024-11-21 01:07:56.896 | INFO     | app.app:register:29 - Usuario registrado: newuser@example.com
+2024-11-21 01:07:56.896 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 201
+2024-11-21 01:07:56.904 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /auth/register | Método: POST
+2024-11-21 01:07:56.904 | INFO     | app.app:register:29 - Usuario registrado: loginuser@example.com
+2024-11-21 01:07:56.905 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 201
+2024-11-21 01:07:56.905 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /auth/login | Método: POST
+2024-11-21 01:07:56.906 | INFO     | app.app:login:52 - Token generado para: loginuser@example.com
+2024-11-21 01:07:56.906 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 200
+2024-11-21 01:07:56.908 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /auth/register | Método: POST
+2024-11-21 01:07:56.909 | INFO     | app.app:register:29 - Usuario registrado: testuser@example.com
+2024-11-21 01:07:56.909 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 201
+2024-11-21 01:07:56.911 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /auth/login | Método: POST
+2024-11-21 01:07:56.911 | INFO     | app.app:login:52 - Token generado para: testuser@example.com
+2024-11-21 01:07:56.911 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 200
+2024-11-21 01:07:56.913 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /auth/logout | Método: POST
+2024-11-21 01:07:56.913 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 200
+2024-11-21 01:07:56.917 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /auth/register | Método: POST
+2024-11-21 01:07:56.917 | ERROR    | app.app:register:35 - Error interno: El usuario ya existe.
+2024-11-21 01:07:56.917 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 500
+2024-11-21 01:07:56.918 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /auth/login | Método: POST
+2024-11-21 01:07:56.918 | INFO     | app.app:login:52 - Token generado para: testuser@example.com
+2024-11-21 01:07:56.918 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 200
+2024-11-21 01:07:56.919 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /usuarios/1 | Método: GET
+2024-11-21 01:07:56.919 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 200
+2024-11-21 01:07:56.921 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /auth/register | Método: POST
+2024-11-21 01:07:56.922 | ERROR    | app.app:register:35 - Error interno: El usuario ya existe.
+2024-11-21 01:07:56.922 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 500
+2024-11-21 01:07:56.923 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /auth/login | Método: POST
+2024-11-21 01:07:56.923 | INFO     | app.app:login:52 - Token generado para: testuser@example.com
+2024-11-21 01:07:56.923 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 200
+2024-11-21 01:07:56.925 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /usuarios/1 | Método: PUT
+2024-11-21 01:07:56.925 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 200
+2024-11-21 01:07:56.929 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /auth/register | Método: POST
+2024-11-21 01:07:56.929 | ERROR    | app.app:register:35 - Error interno: El usuario ya existe.
+2024-11-21 01:07:56.930 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 500
+2024-11-21 01:07:56.931 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /auth/login | Método: POST
+2024-11-21 01:07:56.931 | INFO     | app.app:login:52 - Token generado para: testuser@example.com
+2024-11-21 01:07:56.932 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 200
+2024-11-21 01:07:56.933 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /auth/register | Método: POST
+2024-11-21 01:07:56.933 | INFO     | app.app:register:29 - Usuario registrado: tempuser@example.com
+2024-11-21 01:07:56.933 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 201
+2024-11-21 01:07:56.934 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /usuarios/1 | Método: GET
+2024-11-21 01:07:56.934 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 200
+2024-11-21 01:07:56.935 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /usuarios/1 | Método: DELETE
+2024-11-21 01:07:56.936 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 200
+2024-11-21 01:07:56.936 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /usuarios/1 | Método: GET
+2024-11-21 01:07:56.937 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 404
+2024-11-21 01:07:56.939 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /auth/register | Método: POST
+2024-11-21 01:07:56.939 | ERROR    | app.app:register:35 - Error interno: El usuario ya existe.
+2024-11-21 01:07:56.939 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 500
+2024-11-21 01:07:56.940 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /auth/login | Método: POST
+2024-11-21 01:07:56.940 | INFO     | app.app:login:52 - Token generado para: testuser@example.com
+2024-11-21 01:07:56.940 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 200
+2024-11-21 01:07:56.943 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /establecimientos | Método: POST
+2024-11-21 01:07:56.945 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 201
+2024-11-21 01:07:56.947 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /auth/register | Método: POST
+2024-11-21 01:07:56.947 | ERROR    | app.app:register:35 - Error interno: El usuario ya existe.
+2024-11-21 01:07:56.948 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 500
+2024-11-21 01:07:56.948 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /auth/login | Método: POST
+2024-11-21 01:07:56.949 | INFO     | app.app:login:52 - Token generado para: testuser@example.com
+2024-11-21 01:07:56.949 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 200
+2024-11-21 01:07:56.950 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /establecimientos | Método: POST
+2024-11-21 01:07:56.950 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 201
+2024-11-21 01:07:56.951 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /establecimientos/1 | Método: GET
+2024-11-21 01:07:56.951 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 200
+2024-11-21 01:07:56.953 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /auth/register | Método: POST
+2024-11-21 01:07:56.954 | ERROR    | app.app:register:35 - Error interno: El usuario ya existe.
+2024-11-21 01:07:56.954 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 500
+2024-11-21 01:07:56.955 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /auth/login | Método: POST
+2024-11-21 01:07:56.955 | INFO     | app.app:login:52 - Token generado para: testuser@example.com
+2024-11-21 01:07:56.955 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 200
+2024-11-21 01:07:56.957 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /establecimientos | Método: POST
+2024-11-21 01:07:56.957 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 201
+2024-11-21 01:07:56.958 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /establecimientos/search | Método: GET
+2024-11-21 01:07:56.959 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 200
+2024-11-21 01:07:56.962 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /auth/register | Método: POST
+2024-11-21 01:07:56.962 | ERROR    | app.app:register:35 - Error interno: El usuario ya existe.
+2024-11-21 01:07:56.963 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 500
+2024-11-21 01:07:56.963 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /auth/login | Método: POST
+2024-11-21 01:07:56.964 | INFO     | app.app:login:52 - Token generado para: testuser@example.com
+2024-11-21 01:07:56.964 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 200
+2024-11-21 01:07:56.965 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /establecimientos | Método: POST
+2024-11-21 01:07:56.966 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 201
+2024-11-21 01:07:56.966 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /establecimientos/1/valoraciones | Método: POST
+2024-11-21 01:07:56.967 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 201
+2024-11-21 01:07:56.969 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /auth/register | Método: POST
+2024-11-21 01:07:56.969 | ERROR    | app.app:register:35 - Error interno: El usuario ya existe.
+2024-11-21 01:07:56.969 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 500
+2024-11-21 01:07:56.970 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /auth/login | Método: POST
+2024-11-21 01:07:56.970 | INFO     | app.app:login:52 - Token generado para: testuser@example.com
+2024-11-21 01:07:56.970 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 200
+2024-11-21 01:07:56.972 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /establecimientos | Método: POST
+2024-11-21 01:07:56.972 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 201
+2024-11-21 01:07:56.973 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /establecimientos/1/valoraciones | Método: POST
+2024-11-21 01:07:56.973 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 201
+2024-11-21 01:07:56.978 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /establecimientos/1/valoraciones/1 | Método: PUT
+2024-11-21 01:07:56.979 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 200
+2024-11-21 01:07:56.981 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /auth/register | Método: POST
+2024-11-21 01:07:56.981 | ERROR    | app.app:register:35 - Error interno: El usuario ya existe.
+2024-11-21 01:07:56.981 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 500
+2024-11-21 01:07:56.982 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /auth/login | Método: POST
+2024-11-21 01:07:56.982 | INFO     | app.app:login:52 - Token generado para: testuser@example.com
+2024-11-21 01:07:56.982 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 200
+2024-11-21 01:07:56.984 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /establecimientos | Método: POST
+2024-11-21 01:07:56.984 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 201
+2024-11-21 01:07:56.985 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /establecimientos/1/valoraciones | Método: POST
+2024-11-21 01:07:56.985 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 201
+2024-11-21 01:07:56.987 | INFO     | utils.logging_config:wrapper:10 - Ruta accedida: /establecimientos/1/valoraciones/1 | Método: DELETE
+2024-11-21 01:07:56.987 | INFO     | utils.logging_config:wrapper:15 - Respuesta: 200
