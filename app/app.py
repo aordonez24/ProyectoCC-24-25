@@ -1,10 +1,10 @@
 from flask import Flask, request, jsonify
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required
-from app.services.geolocalizacion import servicio_geolocalizacion
-from app.services.recomendaciones import servicio_recomendaciones
-from app.services.establecimiento import servicio_establecimientos
-from app.services.usuario import servicio_usuarios, ErrorUsuarioExistente
-from app.services.valoracion import servicio_valoraciones
+from services.geolocalizacion import servicio_geolocalizacion
+from services.recomendaciones import servicio_recomendaciones
+from services.establecimiento import servicio_establecimientos
+from services.usuario import servicio_usuarios, ErrorUsuarioExistente
+from services.valoracion import servicio_valoraciones
 from utils.logging_config import logger, log_request
 
 app = Flask(__name__)
