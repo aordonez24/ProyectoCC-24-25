@@ -71,4 +71,140 @@ Para verificar que el `Dockerfile` funciona correctamente:
 
 ---
 
-En el siguiente paso, configuraremos el archivo `compose.yaml` para crear un clúster con múltiples contenedores.
+## Paso 2: Creación del Archivo `docker-compose.yaml`
+
+### Justificación del Uso de `Docker Compose`
+
+El uso de `Docker Compose` permite gestionar un conjunto de servicios que se ejecutan de manera conjunta. Esto es crucial para nuestra aplicación, ya que:
+
+1. **Escalabilidad y Modularidad**:
+   - Permite dividir la aplicación en múltiples contenedores (áreas funcionales separadas).
+   - Escalar y gestionar cada contenedor de forma independiente.
+
+2. **Reproducibilidad**:
+   - Define el estado del clúster en un solo archivo `compose.yaml`.
+   - Simplifica el despliegue en cualquier entorno compatible con Docker.
+
+3. **Compatibilidad con Volúmenes**:
+   - Asegura persistencia de datos mediante contenedores dedicados o volúmenes compartidos.
+
+4. **Configuración Centralizada**:
+   - Todas las configuraciones (variables de entorno, puertos, dependencias) están en un solo archivo.
+
+### Diseño del Archivo `docker-compose.yaml`
+
+El archivo `docker-compose.yaml` define un clúster que incluye:
+
+- **Tres contenedores para la aplicación**:
+  - Cada uno escuchando en diferentes puertos (área de balanceo y replicación).
+
+- **Un contenedor para almacenamiento de datos**:
+  - Implementado con PostgreSQL para persistencia confiable.
+
+### Estructura del Archivo `docker-compose.yaml`
+
+```yaml
+services:
+  app1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5010:5000"
+    environment:
+      - FLASK_ENV=production
+      - DATABASE_URL=postgresql://postgres:password@db/postgres
+    depends_on:
+      - db
+    volumes:
+      - logs:/app/logs
+
+  app2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5011:5000"
+    environment:
+      - FLASK_ENV=production
+      - DATABASE_URL=postgresql://postgres:password@db/postgres
+    depends_on:
+      - db
+    volumes:
+      - logs:/app/logs
+
+  app3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5012:5000"
+    environment:
+      - FLASK_ENV=production
+      - DATABASE_URL=postgresql://postgres:password@db/postgres
+    depends_on:
+      - db
+    volumes:
+      - logs:/app/logs
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
+    driver: local
+  logs:
+    driver: local
+```
+
+### Explicación de la Configuración
+
+1. **Servicios de la Aplicación (app1, app2, app3)**:
+   - Construyen desde el `Dockerfile` en la raíz del proyecto.
+   - Mapean puertos locales (¡5010, 5011, 5012) al puerto interno 5000.
+   - Usan variables de entorno para configurar el entorno de producción y la conexión a la base de datos.
+   - Comparten el volumen `logs` para almacenar registros centralizados.
+
+2. **Servicio de Base de Datos (db)**:
+   - Usa una imagen oficial de PostgreSQL.
+   - Configura credenciales y nombre de la base de datos mediante variables de entorno.
+   - Expone el puerto 5432 para conexión con la aplicación.
+   - Utiliza un volumen `db_data` para persistir datos incluso si el contenedor se reinicia.
+
+3. **Volúmenes**:
+   - `db_data`: Persiste los datos de PostgreSQL.
+   - `logs`: Centraliza los registros generados por los servicios de la aplicación.
+
+### Comprobación
+
+Para verificar que el archivo `docker-compose.yaml` funciona correctamente:
+
+1. Construir y levantar el clúster:
+   ```bash
+   docker-compose up --build
+   ```
+
+2. Verificar que todos los servicios estén corriendo:
+   ```bash
+   docker ps
+   ```
+
+3. Acceder a los servicios:
+   - [http://localhost:5010](http://localhost:5010)
+   - [http://localhost:5011](http://localhost:5011)
+   - [http://localhost:5012](http://localhost:5012)
+
+4. Confirmar que la base de datos está accesible:
+   ```bash
+   psql -h localhost -U postgres -d postgres
+   ```
+
+---
