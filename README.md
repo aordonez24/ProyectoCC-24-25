@@ -52,3 +52,7 @@ Si desea comprobar el avance del proyecto en el hito 2, consulte el archivo [Hit
 ## Hito 3
 
 Si desea comprobar el avance del proyecto en el hito 3, consulte el archivo [Hito 3](Hitos/Hito3.md)
+
+## Hito 4
+
+Si desea comprobar el avance del proyecto en el hito 4, consulte el archivo [Hito 4](Hitos/Hito4.md)
