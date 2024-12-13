@@ -224,5 +224,10 @@ def obtener_ubicaciones_cercanas():
         logger.error(f"Error en /establecimientos/cercanos: {str(e)}")
         return jsonify({"error": "Error interno en el servidor"}), 500
 
+
+@app.route('/health', methods=['GET'])
+def health_check():
+    return jsonify({"status": "ok"}), 200
+
 if __name__ == '__main__':
     app.run(debug=True)

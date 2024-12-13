@@ -1,0 +1,59 @@
+services:
+  app1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5010:5000"
+    environment:
+      - FLASK_ENV=production
+      - DATABASE_URL=postgresql://postgres:password@db/postgres
+    depends_on:
+      - db
+    volumes:
+      - logs:/app/logs
+
+  app2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5011:5000"
+    environment:
+      - FLASK_ENV=production
+      - DATABASE_URL=postgresql://postgres:password@db/postgres
+    depends_on:
+      - db
+    volumes:
+      - logs:/app/logs
+
+  app3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5012:5000"
+    environment:
+      - FLASK_ENV=production
+      - DATABASE_URL=postgresql://postgres:password@db/postgres
+    depends_on:
+      - db
+    volumes:
+      - logs:/app/logs
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
+    driver: local
+  logs:
+    driver: local
