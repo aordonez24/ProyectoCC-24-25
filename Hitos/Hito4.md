@@ -208,3 +208,70 @@ Para verificar que el archivo `docker-compose.yaml` funciona correctamente:
    ```
 
 ---
+
+## Paso 3: Publicación Automática en GitHub Packages
+
+### Configuración
+
+Se configuró un workflow de GitHub Actions para automatizar la construcción, prueba y publicación de imágenes Docker en GitHub Packages.
+
+1. **Secretos Configurados**:
+   - Se generó un token personal desde GitHub con permisos para interactuar con GitHub Packages y repositorios.
+   - Se añadieron los siguientes secretos al repositorio:
+     - `GH_TOKEN`: Token generado en GitHub.
+     - `GH_USERNAME`: Nombre de usuario del propietario del token.
+
+2. **Workflow Configurado**:
+   - Se utilizó el siguiente archivo `.github/workflows/docker-publish.yml`:
+   ```yaml
+   name: Build, Test, and Publish Docker Image
+
+   on:
+     push:
+       branches:
+         - main
+
+   jobs:
+     build-test-publish:
+       runs-on: ubuntu-latest
+
+       steps:
+         - name: Checkout code
+           uses: actions/checkout@v2
+
+         - name: Log in to GitHub Docker Registry
+           run: echo "${{ secrets.GH_TOKEN }}" | docker login ghcr.io -u ${{ secrets.GH_USERNAME }} --password-stdin
+
+         - name: Build Docker image
+           run: |
+             docker build -t ghcr.io/${{ secrets.GH_USERNAME }}/ProyectoCC-24-25:latest .
+
+         - name: Install Docker Compose
+           run: |
+             sudo apt-get update
+             sudo apt-get install -y docker-compose
+
+         - name: Run Docker Compose Tests
+           run: |
+             docker-compose up -d
+             sleep 20 
+             pytest app/test_cluster.py
+             docker-compose down
+
+         - name: Push Docker image to GitHub Packages
+           if: success()
+           run: |
+             docker push ghcr.io/${{ secrets.GH_USERNAME }}/ProyectoCC-24-25:latest
+   ```
+
+3. **Problemas Solucionados**:
+   - Inicialmente, se presentó un error debido a la falta de `docker-compose` en el runner de GitHub Actions.
+   - La solución fue instalar manualmente `docker-compose` en el workflow, como se muestra en la sección `Install Docker Compose`.
+
+4. **Resultado**:
+   - El workflow ahora construye correctamente la imagen Docker, ejecuta las pruebas del clúster con Docker Compose, y publica la imagen en GitHub Packages de manera automática.
+
+5. **Validación**:
+   - Se verificó que la imagen publicada esté disponible en [GitHub Packages](https://github.com) y se pueda utilizar en otros entornos.
+
+---

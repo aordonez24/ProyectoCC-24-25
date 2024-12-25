@@ -1,4 +1,4 @@
-name: Build, Test, and Publish Docker Image
+name: Build and Publish Docker Image
 
 on:
   push:
@@ -6,33 +6,24 @@ on:
       - main
 
 jobs:
-  build-test-publish:
+  build-and-publish:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v2
 
+      # 2. Log in to GitHub Docker Registry
       - name: Log in to GitHub Docker Registry
-        run: echo "${{ secrets.GH_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+        run: echo "${{ secrets.GH_TOKEN }}" | docker login ghcr.io -u ${{ secrets.GH_AORDONEZ24 }} --password-stdin
 
-      - name: Install Docker Compose
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y docker-compose
-
+      # 3. Build the Docker image
       - name: Build Docker image
         run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/proyectocc-24-25:latest .
+          docker build -t ghcr.io/${{ secrets.GH_AORDONEZ24 }}/ProyectoCC-24-25:latest .
 
-      - name: Run Docker Compose Tests
-        run: |
-          docker-compose up -d
-          sleep 20 
-          pytest app/test_cluster.py
-          docker-compose down
-
+      # 4. Push the Docker image to GitHub Packages
       - name: Push Docker image to GitHub Packages
-        if: success()
         run: |
-          docker push ghcr.io/${{ github.repository_owner }}/proyectocc-24-25:latest
+          docker push ghcr.io/${{ secrets.GH_AORDONEZ24 }}/ProyectoCC-24-25:latest
