@@ -222,7 +222,7 @@ Se configuró un workflow de GitHub Actions para automatizar la construcción, p
      - `GH_USERNAME`: Nombre de usuario del propietario del token.
 
 2. **Workflow Configurado**:
-   - Se utilizó el siguiente archivo `.github/workflows/docker-publish.yml`:
+   - Se utilizó el siguiente archivo `.github/workflows/build-and-publish.yml`:
    ```yaml
    name: Build, Test, and Publish Docker Image
 
@@ -230,38 +230,43 @@ Se configuró un workflow de GitHub Actions para automatizar la construcción, p
      push:
        branches:
          - main
-
+   
    jobs:
      build-test-publish:
        runs-on: ubuntu-latest
 
-       steps:
-         - name: Checkout code
-           uses: actions/checkout@v2
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-         - name: Log in to GitHub Docker Registry
-           run: echo "${{ secrets.GH_TOKEN }}" | docker login ghcr.io -u ${{ secrets.GH_USERNAME }} --password-stdin
+      - name: Log in to GitHub Docker Registry
+        run: echo "${{ secrets.GH_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-         - name: Build Docker image
-           run: |
-             docker build -t ghcr.io/${{ secrets.GH_USERNAME }}/ProyectoCC-24-25:latest .
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
 
-         - name: Install Docker Compose
-           run: |
-             sudo apt-get update
-             sudo apt-get install -y docker-compose
+      - name: Install Python dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-         - name: Run Docker Compose Tests
-           run: |
-             docker-compose up -d
-             sleep 20 
-             pytest app/test_cluster.py
-             docker-compose down
+      - name: Build Docker image
+        run: |
+          docker build -t ghcr.io/${{ github.repository_owner }}/proyectocc-24-25:latest .
 
-         - name: Push Docker image to GitHub Packages
-           if: success()
-           run: |
-             docker push ghcr.io/${{ secrets.GH_USERNAME }}/ProyectoCC-24-25:latest
+      - name: Run Docker Compose Tests
+        run: |
+          docker-compose up -d
+          sleep 20 
+          pytest app/test_cluster.py
+          docker-compose down
+
+      - name: Push Docker image to GitHub Packages
+        if: success()
+        run: |
+          docker push ghcr.io/${{ github.repository_owner }}/proyectocc-24-25:latest
    ```
 
 3. **Problemas Solucionados**:
