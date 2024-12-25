@@ -1,0 +1,33 @@
+name: Build, Test, and Publish Docker Image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-test-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Log in to GitHub Docker Registry
+        run: echo "${{ secrets.GH_TOKEN }}" | docker login ghcr.io -u ${{ secrets.GH_USERNAME }} --password-stdin
+
+      - name: Build Docker image
+        run: |
+          docker build -t ghcr.io/${{ secrets.GH_AORDONEZ24 }}/ProyectoCC-24-25:latest .
+
+      - name: Run Docker Compose Tests
+        run: |
+          docker-compose up -d
+          sleep 20 
+          pytest app/test_cluster.py
+          docker-compose down
+
+      - name: Push Docker image to GitHub Packages
+        if: success()
+        run: |
+          docker push ghcr.io/${{ secrets.GH_USERNAME }}/ProyectoCC-24-25:latest
