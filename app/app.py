@@ -236,7 +236,7 @@ def home():
     return jsonify({"message": "Bienvenido a OcioSinGluten"}), 200
 
 @app.route('/casita')
-def home():
+def casita():
     print("Endpoint /casita alcanzado")  # Esto aparecerá en los logs de Render
     return jsonify({"message": "Bienvenido a OcioSinGluten"}), 200
 
