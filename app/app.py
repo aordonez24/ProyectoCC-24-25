@@ -6,6 +6,7 @@ from services.establecimiento import servicio_establecimientos
 from services.usuario import servicio_usuarios, ErrorUsuarioExistente
 from services.valoracion import servicio_valoraciones
 from utils.logging_config import logger, log_request
+import os
 
 app = Flask(__name__)
 app.config['JWT_SECRET_KEY'] = 'clave_secreta_segura'
@@ -229,6 +230,14 @@ def obtener_ubicaciones_cercanas():
 def health_check():
     return jsonify({"status": "ok"}), 200
 
+@app.route('/')
+def home():
+    return jsonify({"message": "Bienvenido a OcioSinGluten"}), 200
+
+
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
+
 
