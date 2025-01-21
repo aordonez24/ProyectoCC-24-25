@@ -16,4 +16,4 @@ ENV PYTHONPATH=/app
 EXPOSE 5000
 
 # Comando para ejecutar la aplicación
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "app:app"]
+CMD ["python", "app/app.py"]
