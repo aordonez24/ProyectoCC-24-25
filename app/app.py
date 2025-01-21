@@ -235,9 +235,9 @@ def home():
     print("Endpoint raíz alcanzado")  # Esto aparecerá en los logs de Render
     return jsonify({"message": "Bienvenido a OcioSinGluten"}), 200
 
-@app.route('/home')
+@app.route('/casita')
 def home():
-    print("Endpoint /home alcanzado")  # Esto aparecerá en los logs de Render
+    print("Endpoint /casita alcanzado")  # Esto aparecerá en los logs de Render
     return jsonify({"message": "Bienvenido a OcioSinGluten"}), 200
 
 if __name__ == '__main__':
